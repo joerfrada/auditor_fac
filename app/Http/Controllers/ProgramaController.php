@@ -48,13 +48,14 @@ class ProgramaController extends Controller
         $idPersonal = Auth::user()->IdPersonal;
         // dd($role->givePermissionTo('edit articles'));
         // $programas= Programa::all();
-
+        // return view ('programasSecad.controlProgramas.ver_tablas_Crearprograma')->with('programas', $programas);
+        
         if (Auth::user()->hasRole('administrador')) {
-            $programas = Programa::all(); 
+            $programas = Programa::all();
             return view ('programasSecad.controlProgramas.ver_tablas_Crearprograma')->with('programas', $programas);           
-        }else{
-            $programas= Programa::getByUser($idPersonal);
-
+        }
+        else {
+            $programas= Programa::getByUser($idPersonal);        
             return view ('programasSecad.controlProgramas.ver_tablas_Crearprograma')->with('programas', $programas);           
         }
         
